@@ -1,11 +1,9 @@
-# WIP.. Check Back Soon!
+# Additional Thoughts Go Here
 
-# Thoughts:
+# Why PSR-4?
 
-I've opted to share the repo with you before I actually start working on the assessment because I believe giving you insight into how I work (commit code etc) provides significant value in addition to the answers themselves.
+A few of the questions are related to namespacing, and in a more general sense, why autload at all?
 
-No obligation to actually view individual commits if you disagree with this sentiment, or simply do not have the time to do so.
+I think its helpful sometimes to take a step back, and remember how things **used** to be.
 
-Thanks,
-
-~Mike
+Back before we even had spl_autoload,
