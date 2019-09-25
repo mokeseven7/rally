@@ -41,7 +41,7 @@ class Product extends \Dsc\Controller
         $this->registerName(__METHOD__);
 
         //TODO :: Try to explain what is going on at the line below. 
-        //--MM: Santize user input. Prevent web raskels from dropping your entire database with a deliberatly placed semi-colon. 
+        //--MM: Sanitize user input. Prevent web rascals from dropping your entire database with a deliberately placed semi-colon. 
         //--MM: looks like also some convenience methods to ensure stricter type checking of whats essentially user supplied input (Good!)
         $tracking = $this->inputfilter->clean($this->app->get('PARAMS.trackingnumber'), 'string');
 
@@ -58,7 +58,7 @@ class Product extends \Dsc\Controller
         // } else {
         //     $kits = $item->getKitsFromThisProduct();
 
-        //--MM: Much better. return not nessisary if it throws immediatly. 
+        //--MM: Much better. return not necessary if it throws immediately. 
         if (empty($item)) {
             //--MM: I would guess, $app exposes an error method which throws an exception.
             //--MM: Somewhere else in the application is responsible for catching and trying to recover. 
@@ -69,27 +69,27 @@ class Product extends \Dsc\Controller
         $kits = $item->getKitsFromThisProduct();
 
         //TODO :: Try to explain what is going on at the line below. 
-        //--MM: $app is most proabbly a global proxy to the container. 
+        //--MM: $app is most probably a global proxy to the container. 
         //--MM: eg. Global scope for this request lifecycle. 
 
         //TODO: explain a few problems with this approach.
-        //--MM: If a product doesnt have kits the logic to handle will make this grow and grow. 
+        //--MM: If a product doesn't have kits the logic to handle will make this grow and grow. 
         //--MM: Honestly any business logic change will make it very messy. 
         //--MM: Changing meta requires making changes to the class that appears to be in charge of displaying all packages on the entire site. 
-        //--MM: Good tests can help mitigate mistakes, but this would make me slighly nervous. 
+        //--MM: Good tests can help mitigate mistakes, but this would make me slightly nervous. 
         $this->app->set('meta.description', 'Save on these ' . count($kits) . ' packages that include ' . $item->title . ' Save with Free Shipping & Expert Jeep Advice');
         $this->app->set('meta.title', 'Packages Deals For ' . $item->title);
 
         //TODO :: What do you think is happening here? 
-        //--MM: I would expect these calls to be hyrdrating view with $kits and $item data. 
-        //--MM: That is, in the view, I would expect an $item and $kits array/object to be avaiable.     
+        //--MM: I would expect these calls to be hydrating view with $kits and $item data. 
+        //--MM: That is, in the view, I would expect an $item and $kits array/object to be available.     
         $this->app->set('item', $item);
         $this->app->set('kits', $kits);
 
         //--MM: Can you really not get this with $app? 
         $view = \Dsc\System::instance()->get('theme');
 
-        //--MM: $view object injected intro contructor of base controller class and exposes API for interacting/returning views?
+        //--MM: $view object injected intro constructor of base controller class and exposes API for interacting/returning views?
         echo $view->render('Shop/Site/Views::product/packages.php');
     }
 }
