@@ -78,5 +78,13 @@ class Routes extends \Dsc\Routes\Group
             'controller' => 'Address',
             'action' => 'index'
         ));
+
+
+        //--MM: Create a new Route
+        //--MM: GET@<vhostRoot>/interview/mmcgrath
+        $this->add('interview/{lastname}', 'GET', [
+            'controller'    => 'Interview',
+            'action'        => 'index',
+        ]);
     }
 }
