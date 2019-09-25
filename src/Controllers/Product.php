@@ -86,7 +86,8 @@ class Product extends \Dsc\Controller
         $this->app->set('item', $item);
         $this->app->set('kits', $kits);
 
-        //--MM: Can you really not get this with $app? 
+        //--MM: Decide on what version of the view to send back in the response based on something
+        //--MM: .. That doesnt appear to be decided in the controller
         $view = \Dsc\System::instance()->get('theme');
 
         //--MM: $view object injected intro constructor of base controller class and exposes API for interacting/returning views?
